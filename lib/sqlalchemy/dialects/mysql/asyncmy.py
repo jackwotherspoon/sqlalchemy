@@ -29,9 +29,8 @@ This dialect should normally be used only with the
 
 
 """  # noqa
-from functools import partial
-
 from contextlib import asynccontextmanager
+from functools import partial
 
 from .pymysql import MySQLDialect_pymysql
 from ... import pool
