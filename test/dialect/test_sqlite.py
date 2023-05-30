@@ -3604,7 +3604,7 @@ class AsyncSqlliteTest(fixtures.TestBase):
         import aiosqlite
 
         async def async_creator():
-            conn = await aiosqlite.connect(...)
+            conn = await aiosqlite.connect(":memory:")
             return conn
 
         engine = async_testing_engine(
