@@ -1219,7 +1219,7 @@ class Psycopg3Test(fixtures.TestBase):
 
 class AsyncPostgresTest(fixtures.TestBase):
     __requires__ = ("async_dialect",)
-    
+
     @testing.only_on("postgresql+psycopg")
     @async_test
     async def test_async_creator(self, async_testing_engine):
