@@ -39,6 +39,7 @@ from ...engine import create_pool_from_url as _create_pool_from_url
 from ...engine import Engine
 from ...engine.base import NestedTransaction
 from ...engine.base import Transaction
+from ...exc import ArgumentError
 from ...util.concurrency import greenlet_spawn
 
 if TYPE_CHECKING:
@@ -84,6 +85,10 @@ def create_async_engine(url: Union[str, URL], **kw: Any) -> AsyncEngine:
     kw["_is_async"] = True
     async_creator = kw.pop("async_creator", None)
     if async_creator:
+        if kw.get("creator", None):
+            raise ArgumentError(
+                "can only specify one of 'async_creator' or 'creator', not both."
+            )
 
         def creator() -> Any:
             # note that to send adapted arguments like
