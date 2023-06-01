@@ -87,7 +87,8 @@ def create_async_engine(url: Union[str, URL], **kw: Any) -> AsyncEngine:
     if async_creator:
         if kw.get("creator", None):
             raise ArgumentError(
-                "can only specify one of 'async_creator' or 'creator', not both."
+                "can only specify one of 'async_creator' or"
+                " 'creator', not both."
             )
 
         def creator() -> Any:
